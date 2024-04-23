@@ -1,5 +1,13 @@
+# import and install
 import csv
-import requests
+import subprocess
+import sys
+try:
+    import requests
+except ModuleNotFoundError:
+    print("attempting to install requests")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "requests"])
+
 
 # Open the CSV file
 with open('your_file.csv', 'r') as file:
