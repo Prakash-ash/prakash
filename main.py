@@ -4,12 +4,15 @@ import requests
 import os
 
 
-# Open the CSV file
-input_file = input("Enter the filePath to the CSV: ")
-# output_file = input("Enter the output folder for the new CSV: ")
-
-
 def run():
+
+    # Open the CSV file
+    input_file = input("Enter the filePath to the CSV: ")
+    # output_file = input("Enter the output folder for the new CSV: ")
+    runCSVDataInAPI(input_file)
+
+
+def runCSVDataInAPI(input_file):
 
     with open(input_file, 'r') as file:
         # Create a CSV reader
