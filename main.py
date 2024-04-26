@@ -1,15 +1,19 @@
 # import and install
 import csv
 import requests
+import time
 import os
 
 
 def run():
-
+    start_time = time.time()
     # Open the CSV file
     input_file = input("Enter the filePath to the CSV: ")
     # output_file = input("Enter the output folder for the new CSV: ")
     runCSVDataInAPI(input_file)
+    end_time = time.time()
+    execution_time = end_time - start_time
+    print(f"The script ran in {execution_time} seconds")
 
 
 def runCSVDataInAPI(input_file):
@@ -52,21 +56,12 @@ def runCSVDataInAPI(input_file):
             responseData = response.json()
             row.append(responseData["data"]["summary"])
             row.append(responseData["data"]["ttsDriver"])
-            # print(response.text)
             # Add the row to the new rows
             new_rows.append(row)
 
         except Exception as err:
             print(f"case {ticket_id_value} gave an error {
                   err} when attempting to run")
-
-        # Add the API response to the row
-        # responseData = response.json()
-        # row.append(responseData)
-        # print(responseData["data"]["summary"])
-        # print(responseData["data"]["ttsDriver"])
-        # row.append(responseData["data"]["summary"])
-        # row.append(responseData["data"]["ttsDriver"])
         count += 1
 
     # Add the new header
